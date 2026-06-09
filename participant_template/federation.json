@@ -1,0 +1,20 @@
+{
+  "node": {
+    "id":            "your-institution-id",
+    "name":          "Your University Name",
+    "city":          "Your City",
+    "lat":           52.000,
+    "lon":           -1.000,
+    "color":         "#00FFC6",
+    "url":           "https://your-username.github.io/sonair-portal/",
+    "contact_email": "yourname@your-institution.ac.uk",
+    "role":          "Hackathon campus node",
+    "summary":       "Brief description of your lab and what robotics work you do."
+  },
+  "co_creation_card": {
+    "title":       "Your Lab SONAIR Sub-Portal",
+    "description": "Describe your robotics work and the evidence you are contributing to the SONAIR network.",
+    "tags":        ["Robotics", "Sim2Real", "SONAIR"],
+    "visitor_url": "https://your-username.github.io/sonair-portal/"
+  }
+}
