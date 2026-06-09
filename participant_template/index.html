@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SONAIR Campus Sub-Portal Template</title>
+  <style>
+    :root { --primary:#00FFC6; --bg:#07101a; --panel:#0b1622; --text:#e8f0f8; --muted:#9bb3c7; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, sans-serif; background:var(--bg); color:var(--text); }
+    header, main { width:min(1100px, 92vw); margin:auto; }
+    header { padding:38px 0 22px; border-bottom:1px solid rgba(255,255,255,.12); }
+    h1 { margin:0 0 8px; font-size:clamp(28px, 5vw, 52px); }
+    h2 { color:var(--primary); margin-top:0; }
+    .muted { color:var(--muted); line-height:1.6; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:16px; margin:22px 0; }
+    .card { background:var(--panel); border:1px solid rgba(0,255,198,.22); border-radius:16px; padding:18px; }
+    .badge { display:inline-block; border:1px solid var(--primary); color:var(--primary); border-radius:999px; padding:4px 10px; font-size:12px; }
+    a { color:var(--primary); }
+    #requests-inbox { margin-top:14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="badge" id="city">Campus node</span>
+    <h1 id="institution">Your University Name</h1>
+    <p class="muted" id="node-name">Your Robotics Lab</p>
+  </header>
+
+  <main>
+    <section class="grid" aria-label="Portal overview">
+      <article class="card">
+        <h2>Lab identity</h2>
+        <p class="muted">Replace this text with who your lab is, what robotics capability you have, and what collaboration you are open to.</p>
+      </article>
+      <article class="card">
+        <h2>Equipment / dataset</h2>
+        <p class="muted">Example: UR5e teleoperation dataset, RGB-D camera, force sensing, ultrasound probe, or a lab robot platform.</p>
+      </article>
+      <article class="card">
+        <h2>Collaboration contact</h2>
+        <p class="muted">Email: <a href="mailto:yourname@your-institution.ac.uk">yourname@your-institution.ac.uk</a></p>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Requests Inbox</h2>
+      <p class="muted">Access or collaboration requests routed to this campus node will appear here. Approve or reject them from your own sub-portal.</p>
+      <div id="requests-inbox"></div>
+    </section>
+  </main>
+
+  <script>
+    // Required by the hackathon guide: load visual identity from theme.config.json.
+    fetch('theme.config.json', { cache: 'no-store' })
+      .then(r => r.json())
+      .then(config => {
+        document.documentElement.style.setProperty('--primary', config.primary_color || '#00FFC6');
+        document.getElementById('institution').textContent = config.institution_name || 'Your University Name';
+        document.getElementById('node-name').textContent = config.node_name || 'Your Robotics Lab';
+        document.getElementById('city').textContent = config.city || 'Campus node';
+        document.title = (config.institution_name || 'SONAIR') + ' Sub-Portal';
+      })
+      .catch(() => console.warn('theme.config.json could not be loaded'));
+  </script>
+
+  <script>
+    // Required for request routing. NODE_ID must exactly match federation.json -> node.id.
+    window.SONAIR_NODE_ID  = 'your-institution-id';
+    // On the day, replace this with the event request API endpoint, e.g. http://192.168.1.23:5055
+    window.SONAIR_API_BASE = 'http://EVENT_REQUEST_API:5055';
+  </script>
+  <!-- Keep this file in your GitHub repository root. If this script is missing, the inbox will not load. -->
+  <script src="sonair_request_system.js"></script>
+  <script>
+    SONAIR_REQUESTS.renderInbox('requests-inbox');
+  </script>
+</body>
+</html>
