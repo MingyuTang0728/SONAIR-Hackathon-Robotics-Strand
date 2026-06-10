@@ -9,7 +9,6 @@ Your goal is to create a public-facing campus or lab sub-portal that can be disc
 ```text
 SONAIR_Participant_Package_EN/
 ├── README.md
-├── QUICK_START.md
 ├── SUBMISSION_CHECKLIST.md
 ├── TROUBLESHOOTING.md
 ├── data/
