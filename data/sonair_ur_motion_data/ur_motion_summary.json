@@ -1,0 +1,46 @@
+{
+  "session_id": "ur-1779196701930-c7bc1d",
+  "started_at": "2026-05-19T13:21:24.446Z",
+  "exported_at": "2026-05-19T13:25:21.947Z",
+  "operation_count": 2128,
+  "tcp_sample_count": 712,
+  "joint_sample_count": 717,
+  "sampling_note": "TCP and joint states are down-sampled to <=5Hz in browser. Command logging is asynchronous and does not wrap WebSocket.send.",
+  "last_tcp": {
+    "ts": "2026-05-19T13:25:21.716Z",
+    "t_ms": 1779197121716,
+    "x": 0.5523853472553604,
+    "y": 0.21390530139374564,
+    "z": 0.045796524681719825,
+    "rx": 2.9228050713567533,
+    "ry": -1.064298070447709,
+    "rz": -0.07935257228920888,
+    "role": "guest",
+    "authority": "observer"
+  },
+  "last_operation": {
+    "ts": "2026-05-19T13:24:22.452Z",
+    "t_ms": 1779197062452,
+    "route": "verify_center_script",
+    "type": "run_script",
+    "seq": 2923,
+    "authority": "operator",
+    "role": "guest",
+    "tcp_at_send": [
+      0.6438369528604057,
+      0.15318779620701542,
+      0.04581090188996806,
+      2.9229077113436652,
+      -1.064307894746308,
+      -0.07938835087269461
+    ],
+    "payload": {
+      "type": "run_script",
+      "script_size": 108,
+      "script_first_line": "def verify_center():",
+      "script": "[redacted: exported as size + first line only]",
+      "seq": 2923,
+      "ts": 1779197062441
+    }
+  }
+}
